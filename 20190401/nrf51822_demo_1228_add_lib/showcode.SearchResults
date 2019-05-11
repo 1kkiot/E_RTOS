@@ -1,0 +1,9 @@
+---- CH Matches (8 in 2 files) ----
+Setting.c (app):	if(temp != CH)
+Setting.c (app):	if(temp != CH)
+Setting.c (app):	buf[0] = CH;
+Setting.c (app):	buf[8] = CH;
+Setting.c (app):	if(temp != CH)//不是本机指令
+Setting.c (app):	if(*data++ != CH)
+Setting.c (app):	if(temp != CH)
+Setting.h (app):#define			CH					0x03
