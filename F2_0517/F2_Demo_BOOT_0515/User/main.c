@@ -9,11 +9,12 @@ int main(void)
 	HAL_Init();
 	SystemClock_Config();
 	MX_GPIO_Init();
+	HAL_Delay(50);
 	boot();
 	while(1)
 	{
 		TogglePin(LED1);
-		HAL_Delay(100);
+		HAL_Delay(50);
 		TogglePin(LED2);
 	}
 }

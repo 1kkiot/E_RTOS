@@ -14,7 +14,8 @@ backup
 tmp		0x80e0000
 */
 
-typedef  void (*pFunction)(void);
+
+
 pFunction JumpToApplication;
 uint32_t JumpAddress;
 
@@ -29,12 +30,14 @@ read 4byte
 const u8 jump_app1_buf[4] = {0xa1,0xaa,0x55,0x1a};
 const u8 jump_app2_buf[4] = {0xa2,0x55,0xaa,0x2a};
 const u8 jump_appbackup_buf[4] = {0xa3,0xaa,0x33,0x3a};
+u8 buf[4]={0,};
 
 void boot()
 {
-	u8 buf[4];
 	//tmp = STMFLASH_ReadWord(JUMP_FLAG_ADDRESS);
+
 	STMFLASH_Read(JUMP_FLAG_ADDRESS,(u32 *)buf,1);
+
 	if(memcmp(jump_app1_buf,buf,4) == 0)
 	{
 		jump_app1();//jump app1

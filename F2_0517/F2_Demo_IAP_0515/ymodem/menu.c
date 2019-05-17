@@ -57,6 +57,7 @@
 #include "menu.h"
 #include "ymodem.h"
 #include "stmflash.h"
+#define	JUMP_FLAG_ADDRESS		0x08004000
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
@@ -71,6 +72,15 @@ void SerialDownload(void);
 void SerialUpload(void);
 
 /* Private functions ---------------------------------------------------------*/
+//update app2 Çø
+const u8 jump_app2_buf[4] = {0xa2,0x55,0xaa,0x2a};
+void UpdateFlag()
+{
+	STMFLASH_Write(JUMP_FLAG_ADDRESS,(uint32_t *)jump_app2_buf,1);
+}
+
+
+
 
 /**
   * @brief  Download a file via serial port
@@ -96,10 +106,11 @@ void SerialDownload(void)
     Serial_PutString((uint8_t *)" Bytes\r\n");
     Serial_PutString((uint8_t *)"-------------------\n");
 	HAL_Delay(10);
+	UpdateFlag();
   }
   else if (result == COM_LIMIT)
   {
-    Serial_PutString((uint8_t *)"\n\n\rThe image size is higher than the allowed space memory!\n\r");
+    Serial_PutString((uint8_t *)"\n\n\rThe file size is higher than the allowed space memory!\n\r");
   }
   else if (result == COM_DATA)
   {
