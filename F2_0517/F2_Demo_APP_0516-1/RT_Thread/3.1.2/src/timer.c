@@ -717,5 +717,5 @@ void rt_system_timer_thread_init(void)
     rt_thread_startup(&timer_thread);
 #endif
 }
-
+MSH_CMD_EXPORT(rt_system_timer_thread_init, time System);
 /**@}*/

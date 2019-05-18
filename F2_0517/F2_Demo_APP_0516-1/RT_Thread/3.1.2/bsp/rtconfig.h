@@ -10,7 +10,7 @@
 // <h>Basic Configuration
 // <o>Maximal level of thread priority <8-256>
 //	<i>Default: 32
-#define RT_THREAD_PRIORITY_MAX 32
+#define RT_THREAD_PRIORITY_MAX 64
 
 // <o>OS tick per second
 //  <i>Default: 1000   (1ms)
@@ -22,7 +22,7 @@
 
 // <o>the max length of object name<2-16>
 //	<i>Default: 8
-#define RT_NAME_MAX 8
+#define RT_NAME_MAX 16
 
 // <c1>Using RT-Thread components initialization
 //  <i>Using RT-Thread components initialization
@@ -48,7 +48,7 @@
 // <h>Debug Configuration
 // <c1>enable kernel debug configuration
 //  <i>Default: enable kernel debug configuration
-//#define RT_DEBUG
+#define RT_DEBUG
 // </c>
 
 // <o>enable components initialization debug configuration<0-1>
@@ -57,7 +57,7 @@
 
 // <c1>thread stack over flow detect
 //  <i> Diable Thread stack over flow detect
-//#define RT_USING_OVERFLOW_CHECK
+#define RT_USING_OVERFLOW_CHECK
 // </c>
 // </h>
 
@@ -113,7 +113,7 @@
 
 // <c1>Using Message Queue
 //  <i>Using Message Queue
-//#define RT_USING_MESSAGEQUEUE
+#define RT_USING_MESSAGEQUEUE
 // </c>
 // </h>
 

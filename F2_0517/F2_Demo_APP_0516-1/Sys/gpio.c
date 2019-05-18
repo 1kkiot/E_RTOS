@@ -37,6 +37,8 @@ void MX_GPIO_Init(void)
 
 	SET_GPIO_OUT(LED1);
 	SET_GPIO_OUT(LED2);
+	SET_GPIO_OUT(LED3);
+	SET_GPIO_OUT(LED4);
 }
 
 /*******************************************************************************

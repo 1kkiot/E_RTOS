@@ -25,6 +25,10 @@ Modify Time:
 #define		LED1_PIN				GPIO_PIN_11
 #define		LED2					GPIOB
 #define		LED2_PIN				GPIO_PIN_1
+#define		LED3					GPIOA
+#define		LED3_PIN				GPIO_PIN_4
+#define		LED4					GPIOA
+#define		LED4_PIN				GPIO_PIN_5
 
 #define 	SET_GPIO_OUT(x)				Set_GPIO_PIN(x,x##_PIN,GPIO_SPEED_FREQ_LOW,GPIO_MODE_OUTPUT_PP)
 #define 	SET_GPIO_IN(x)				Set_GPIO_PIN(x,x##_PIN,GPIO_SPEED_FREQ_LOW,GPIO_MODE_INPUT)
