@@ -82,7 +82,7 @@ enum{
 };
 
 /* End of the Flash address */
-#define USER_FLASH_END_ADDRESS        0x080FFFFF
+#define USER_FLASH_END_ADDRESS        0x080DFFFF
 /* Define the user application size */
 #define USER_FLASH_SIZE   (USER_FLASH_END_ADDRESS - APPLICATION_ADDRESS + 1)
 

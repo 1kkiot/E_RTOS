@@ -89,11 +89,11 @@ uint32_t FLASH_If_Erase(uint32_t StartSector)
   FLASH_If_Init();
   
   /* Get the sector where start the user flash area */
-  UserStartSector = GetSector(APPLICATION_ADDRESS);
+  UserStartSector = GetSector(StartSector);
   
   pEraseInit.TypeErase = TYPEERASE_SECTORS;
   pEraseInit.Sector = UserStartSector;
-  pEraseInit.NbSectors = 10;
+  pEraseInit.NbSectors = 2;
   pEraseInit.VoltageRange = VOLTAGE_RANGE_3;
     
   if (HAL_FLASHEx_Erase(&pEraseInit, &SectorError) != HAL_OK)

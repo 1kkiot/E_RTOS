@@ -4,12 +4,6 @@
 #include "Memory.h"
 #include "Debugprintf.h"
 
-struct msg
-{
-	u8 *data_prt;
-	u32 data_size;
-};
-
 void send_op(void *data,rt_size_t len)
 {
 	struct msg msg_prt;
@@ -24,7 +18,7 @@ void message_handler_entry(void* parameter)
 	if(rt_mq_recv(&mq_task,(void *)&msg_prt,sizeof(struct msg),0) == RT_EOK)
 	{
 		TogglePin(LED4);
-		rt_kprintf("mq message = %s",msg_prt.data_prt);
+		;//rt_kprintf("mq message = %s",msg_prt.data_prt);
 	}
 }
 
