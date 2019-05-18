@@ -85,7 +85,7 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 
 void USART6_IRQHandler(void)
 {
-	HAL_UART_IRQHandler(&UartHandle);
+	;//HAL_UART_IRQHandler(&UartHandle);
 }
 
 

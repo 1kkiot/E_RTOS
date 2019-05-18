@@ -8,7 +8,7 @@ extern "C" {
 #include "stm32f2xx_hal.h"
 
 void Error_Handler(void);
-
+#include "MyFinsh.h"
 #ifdef __cplusplus
 }
 #endif

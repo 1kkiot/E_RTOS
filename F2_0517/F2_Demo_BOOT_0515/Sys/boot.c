@@ -50,6 +50,10 @@ void boot()
 	{
 		jump_backupapp();//jump backup app
 	}
+	else//Ä¬ÈÏÈ¥app
+	{
+		jump_app2();
+	}
 }
 
 

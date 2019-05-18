@@ -9,6 +9,7 @@ void MX_GPIO_Init(void)
 
 	SET_GPIO_OUT(LED1);
 	SET_GPIO_OUT(LED2);
+	SET_GPIO_H(LED2);
 }
 void Set_GPIO_PIN(GPIO_TypeDef *gpio, uint16_t nPin,uint32_t speed,uint32_t mode)
 {

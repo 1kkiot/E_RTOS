@@ -5,12 +5,12 @@ const u8 jump_app1_buf[4] = {0xa1,0xaa,0x55,0x1a};
 const u8 jump_app2_buf[4] = {0xa2,0x55,0xaa,0x2a};
 const u8 jump_appbackup_buf[4] = {0xa3,0xaa,0x33,0x3a};
 
-void reboot(uint8_t argc, char **argv) 
+void sysreboot(uint8_t argc, char **argv) 
 {
 	__set_FAULTMASK(1);//关闭所有中断
 	NVIC_SystemReset();//复位函数
 }
-MSH_CMD_EXPORT(reboot, Reboot System);
+MSH_CMD_EXPORT(sysreboot, Reboot System);
 
 void restart_app1()
 {

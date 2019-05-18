@@ -7,8 +7,7 @@
 //const u8 TEXT_Buffer[]={"STM32 FL12SH TEST"};
 //#define TEXT_LENTH sizeof(TEXT_Buffer)
 //#define SIZE TEXT_LENTH/4+((TEXT_LENTH%4)?1:0)
-
-#define FLASH_SAVE_ADDR  0X080E0000
+//#define FLASH_SAVE_ADDR  0X08010000
 
 void SystemClock_Config(void);
 
@@ -21,16 +20,21 @@ int main(void)
 	MX_GPIO_Init();
 	MX_USART6_UART_Init();
 //	STMFLASH_Write(FLASH_SAVE_ADDR,(u32*)TEXT_Buffer,SIZE);
+	Main_Menu();
 	while(1)
 	{
+		TogglePin(LED1);
+		TogglePin(LED2);
+		HAL_Delay(80);
+	}
+//	{
 //		STMFLASH_Read(FLASH_SAVE_ADDR,(u32*)datatemp,SIZE);
 //		if(strcmp(TEXT_Buffer,datatemp)==0)
 //		{
 //			TogglePin(LED1);
 //			HAL_Delay(100);
 //		}
-		Main_Menu();
-	}
+//	}
 
 }
 
