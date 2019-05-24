@@ -33,30 +33,31 @@ void MX_GPIO_Init(void)
 	__HAL_RCC_GPIOH_CLK_ENABLE();
 	__HAL_RCC_GPIOA_CLK_ENABLE();
 	__HAL_RCC_GPIOB_CLK_ENABLE();
+	__HAL_RCC_GPIOC_CLK_ENABLE();
 	__HAL_RCC_GPIOE_CLK_ENABLE();
 
-	SET_GPIO_OUT(LED1);
-	SET_GPIO_OUT(LED2);
-	SET_GPIO_OUT(LED3);
-	SET_GPIO_OUT(LED4);
+//	SET_GPIO(LED1,LED1_OUT);
+	SET_GPIO(LED2,LED2_OUT);
+//	SET_GPIO(LED3,LED3_OUT);
+//	SET_GPIO(LED4,LED4_OUT);
 }
 
 /*******************************************************************************
-* @Function		:void Set_GPIO_PIN(GPIO_TypeDef *gpio, uint16_t nPin,uint32_t speed,uint32_t mode)
+* @Function		:(GPIO_TypeDef *gpio, uint16_t nPin,uint32_t speed,uint32_t mode,uint32_t pull)
 * @Description	:实现设置gpio方向
-* @Input		:GPIO_TypeDef,nPin,speed,mode
+* @Input		:GPIO_TypeDef,nPin,speed,mode,pull
 * @Output		:null
 * @Return		:null
 * @Others		:null
 *******************************************************************************/
-void Set_GPIO_PIN(GPIO_TypeDef *gpio, uint16_t nPin,uint32_t speed,uint32_t mode)
+void Set_GPIO_PIN(GPIO_TypeDef *gpio, uint16_t nPin,uint32_t speed,uint32_t mode,uint32_t pull)
 {
 	GPIO_InitTypeDef GPIO_InitStruct;
 	
 	HAL_GPIO_WritePin(gpio, nPin, GPIO_PIN_RESET);
 	GPIO_InitStruct.Pin = nPin;
 	GPIO_InitStruct.Mode = mode;
-	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Pull = pull;
 	GPIO_InitStruct.Speed = speed;
 	HAL_GPIO_Init(gpio, &GPIO_InitStruct);
 }

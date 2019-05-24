@@ -1,39 +1,63 @@
+/******************************************************************************
+File name  : TaskInit.c
+Description: 主要实现任务初始化
+Platform   : MDK V5.26.0.0
+Version    : V1.0
+Author	   : Jason
+Create Time: 2019-05-15
+Modify	   : 
+Modify Time: 
+*******************************************************************************/
 #include "TaskInit.h"
 #include "RunTask1.h"
-#define THREAD1_STACK_SIZE			256
+#define THREAD1_STACK_SIZE			512
 #define THREAD1_PRIORITY			4
-#define THREAD1_TIMESLICE			30
+#define THREAD1_TIMESLICE			300
 
 #define THREAD2_STACK_SIZE			1024
 #define THREAD2_PRIORITY			3
-#define THREAD2_TIMESLICE			20
+#define THREAD2_TIMESLICE			200
 
 #define THREAD3_STACK_SIZE			1024
 #define THREAD3_PRIORITY			5
-#define THREAD3_TIMESLICE			50
+#define THREAD3_TIMESLICE			500
+
+#define THREAD4_STACK_SIZE			1024
+#define THREAD4_PRIORITY			6
+#define THREAD4_TIMESLICE			500
 
 /* 定义线程控制块 */
 struct rt_messagequeue mq_task;
 static rt_uint8_t msg_pool[2048];
 rt_err_t mq_result;
 
-rt_thread_t task1_thread = RT_NULL;
-rt_thread_t task2_thread = RT_NULL;
-rt_thread_t task3_thread = RT_NULL;
 rt_timer_t tim1_thread = RT_NULL;
 rt_timer_t tim2_thread = RT_NULL;
 rt_timer_t message_handler = RT_NULL;
 
+rt_thread_t task1_thread = RT_NULL;
+rt_thread_t task2_thread = RT_NULL;
+rt_thread_t task3_thread = RT_NULL;
+rt_thread_t task4_thread = RT_NULL;
+
+/*******************************************************************************
+* @Function		:int task_init()
+* @Description	:初始化任务功能
+* @Input		:null
+* @Output		:null
+* @Return		:true
+* @Others		:null
+*******************************************************************************/
 int task_init()
 {
 
 	mq_result =
-	rt_mq_init(&mq_task,
-				"mqt",
-				&msg_pool[0], /* 内存池指向msg_pool */   
-				256 - sizeof(void*), /* 每个消息的大小是 128 - void* */  
-				sizeof(msg_pool), /* 内存池的大小是msg_pool的大小 */  
-				RT_IPC_FLAG_FIFO);/* 如果有多个线程等待，按照先来先得到的方法分配消息 */  
+	rt_mq_init(		&mq_task,
+					"mqt",
+					&msg_pool[0],/* 内存池指向msg_pool */
+					256 - sizeof(void*),/* 每个消息的大小是 128 - void* */
+					sizeof(msg_pool), /* 内存池的大小是msg_pool的大小 */
+					RT_IPC_FLAG_FIFO);/* 如果有多个线程等待，按照先来先得到的方法分配消息 */
 
 	if(mq_result != RT_EOK)
 	{
@@ -115,15 +139,28 @@ int task_init()
 	{
 		rt_thread_startup(task3_thread);
 	}
+
+	task4_thread =
+	rt_thread_create(	"task4",              /* 线程名字 */
+						task4_thread_entry,   /* 线程入口函数 */
+						RT_NULL,             /* 线程入口函数参数 */
+						THREAD4_STACK_SIZE,   /* 线程栈大小 */
+						THREAD4_PRIORITY,     /* 线程的优先级 */
+						THREAD4_TIMESLICE);   /* 线程时间片 */
+
+	if(task4_thread != RT_NULL)
+	{
+		rt_thread_startup(task4_thread);
+	}
 	return true;
 }
 
 
-/* 如果设置了RT_SAMPLES_AUTORUN，则加入到初始化线程中自动运行 */
+
 #if defined (RT_SAMPLES_AUTORUN) && defined(RT_USING_COMPONENTS_INIT)
-	INIT_APP_EXPORT(task_init);
+INIT_APP_EXPORT(task_init);
 #endif
-/* 导出到 msh 命令列表中 */
+
 //MSH_CMD_EXPORT(task_init, run signal sample);
 
 

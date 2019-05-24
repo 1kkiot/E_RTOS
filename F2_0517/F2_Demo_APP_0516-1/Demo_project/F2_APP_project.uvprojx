@@ -274,7 +274,7 @@
               </OCR_RVCT3>
               <OCR_RVCT4>
                 <Type>1</Type>
-                <StartAddress>0x8010000</StartAddress>
+                <StartAddress>0x8000000</StartAddress>
                 <Size>0x54000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F207xx</Define>
               <Undefine></Undefine>
-              <IncludePath>..\HAL\STM32F2xx_HAL_Driver\Inc;..\HAL\STM32F2xx_HAL_Driver\Inc\Legacy;..\User;..\HAL;..\Core;..\Sys;..\RT_Thread\3.1.2\bsp;..\RT_Thread\3.1.2\include;..\RT_Thread\3.1.2\include\libc;..\Myfinsh;..\RT_Thread\3.1.2\components\drivers\include\drivers;..\RT_Thread\3.1.2\components\drivers\include;..\RT_Thread\3.1.2\components\finsh;..\Memory;..\debug;..\IAP;..\Task;..\EasyFlash</IncludePath>
+              <IncludePath>..\HAL\STM32F2xx_HAL_Driver\Inc;..\HAL\STM32F2xx_HAL_Driver\Inc\Legacy;..\User;..\HAL;..\Core;..\Sys;..\RT_Thread\3.1.2\bsp;..\RT_Thread\3.1.2\include;..\RT_Thread\3.1.2\include\libc;..\Myfinsh;..\RT_Thread\3.1.2\components\drivers\include\drivers;..\RT_Thread\3.1.2\components\drivers\include;..\RT_Thread\3.1.2\components\finsh;..\Memory;..\debug;..\IAP;..\Task;..\EasyFlash;..\App</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -617,6 +617,11 @@
               <FileType>1</FileType>
               <FilePath>..\HAL\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal_uart.c</FilePath>
             </File>
+            <File>
+              <FileName>stm32f2xx_hal_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HAL\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal_spi.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -702,6 +707,16 @@
               <FileType>5</FileType>
               <FilePath>..\Sys\uart_irq.h</FilePath>
             </File>
+            <File>
+              <FileName>spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Sys\spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>spi.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Sys\spi.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -775,6 +790,61 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>APP</GroupName>
+          <Files>
+            <File>
+              <FileName>LETN720.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\LETN720.c</FilePath>
+            </File>
+            <File>
+              <FileName>LETN720.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\App\LETN720.h</FilePath>
+            </File>
+            <File>
+              <FileName>NRF24.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\NRF24.c</FilePath>
+            </File>
+            <File>
+              <FileName>NRF24.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\App\NRF24.h</FilePath>
+            </File>
+            <File>
+              <FileName>NRF24IO.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\NRF24IO.c</FilePath>
+            </File>
+            <File>
+              <FileName>NRF24IO.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\App\NRF24IO.h</FilePath>
+            </File>
+            <File>
+              <FileName>Analysis.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\Analysis.c</FilePath>
+            </File>
+            <File>
+              <FileName>Analysis.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\App\Analysis.h</FilePath>
+            </File>
+            <File>
+              <FileName>Unpack.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\Unpack.c</FilePath>
+            </File>
+            <File>
+              <FileName>Unpack.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\App\Unpack.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>RT_Thread_bsp</GroupName>
           <Files>
             <File>
@@ -836,6 +906,16 @@
               <FileName>OSCmd.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Task\OSCmd.h</FilePath>
+            </File>
+            <File>
+              <FileName>mem_pool.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Task\mem_pool.c</FilePath>
+            </File>
+            <File>
+              <FileName>mem_pool.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Task\mem_pool.h</FilePath>
             </File>
           </Files>
         </Group>

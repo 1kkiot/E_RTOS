@@ -52,6 +52,8 @@ void MX_USART6_UART_Init(void)
 	HAL_UART_Receive_DMA(&huart6, UartAT.RX_Data,RX_LEN);  
 	//¿ªÆô´®¿ÚÖÐ¶Ï
 	__HAL_UART_ENABLE_IT(&huart6, UART_IT_IDLE);
+//	__HAL_UART_ENABLE_IT(&huart6, UART_IT_IDLE);
+//	__HAL_UART_ENABLE_IT(&huart6, UART_IT_RXNE);
 
 }
 
@@ -173,7 +175,7 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 		HAL_GPIO_DeInit(GPIOC, GPIO_PIN_6|GPIO_PIN_7);
 
 		/* USART6 DMA DeInit */
-		HAL_DMA_DeInit(uartHandle->hdmarx);
+		//HAL_DMA_DeInit(uartHandle->hdmarx);
 		HAL_DMA_DeInit(uartHandle->hdmatx);
 
 		/* USART6 interrupt Deinit */

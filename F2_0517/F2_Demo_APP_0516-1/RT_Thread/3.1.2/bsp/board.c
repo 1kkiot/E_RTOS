@@ -19,6 +19,8 @@
 #include "MyFinsh.h"
 #include "gpio.h"
 #include "Memory.h"
+#include "spi.h"
+#include "NRF24.h"
 /**
  * @addtogroup STM32
  */
@@ -131,7 +133,7 @@ void rt_hw_board_init(void)
 	MX_GPIO_Init();
 	MX_DMA_Init();
 	MX_USART6_UART_Init();
-
+	NRF24L01_Init();
 #ifdef RT_USING_HEAP
     rt_system_heap_init((void *)HEAP_BEGIN, (void *)HEAP_END);
 #endif

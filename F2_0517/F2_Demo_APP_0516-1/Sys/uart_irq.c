@@ -21,6 +21,8 @@ Modify Time:
 #include "uart_irq.h"
 #include "Memory.h"
 UartDMA_t UartAT;
+_uartRxState uart1RxState = UART_RX_STATE_READY;
+
 void DMA2_Stream1_IRQHandler(void)
 {
 	HAL_DMA_IRQHandler(&hdma_usart6_rx);
@@ -35,6 +37,29 @@ void DMA2_Stream6_IRQHandler(void)
 
 void USART6_IRQHandler(void)
 {
+//	u8 temp=0;
+//	if((__HAL_UART_GET_FLAG(&huart6,UART_FLAG_RXNE)!=RESET))
+//	{
+//		temp = (uint8_t)(huart6.Instance->DR);
+//		if(uart1RxState == UART_RX_STATE_READY)
+//		{
+//			uart1RxState = UART_RX_STATE_START;
+//			UartAT.RX_Size = 0;
+//			UartAT.RX_Data[UartAT.RX_Size++] = temp;
+//		}
+//		else if(uart1RxState == UART_RX_STATE_START) 
+//		{
+//			UartAT.RX_Data[UartAT.RX_Size++] = temp;
+//		}
+//		__HAL_UART_CLEAR_FLAG(&huart6,UART_FLAG_RXNE);
+//	}
+//	if((__HAL_UART_GET_FLAG(&huart6,UART_FLAG_IDLE)!=RESET))
+//	{
+//		//TogglePin(LED2);
+//		fifo_puts(&UartATFifo,UartAT.RX_Data,UartAT.RX_Size);
+//		uart1RxState = UART_RX_STATE_READY;
+//		__HAL_UART_CLEAR_FLAG(&huart6,UART_FLAG_IDLE);
+//	}
 	u16 tmp;
 	HAL_UART_IRQHandler(&huart6);
 	if(__HAL_UART_GET_FLAG(&huart6,UART_FLAG_IDLE) != RESET)

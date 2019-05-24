@@ -49,7 +49,7 @@ int fputc(int ch,FILE *f)
 *******************************************************************************/
 void printf_dma(const char *format, ...)
 {
-	static char print_buffer[256];
+	char print_buffer[256];
 	u16 length;
 	va_list args;
 	while(HAL_DMA_GetState(&hdma_usart6_tx) == HAL_DMA_STATE_BUSY);

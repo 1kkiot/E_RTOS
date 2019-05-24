@@ -2,6 +2,7 @@
 #include "stmflash.h"
 
 const u8 jump_app1_buf[4] = {0xa1,0xaa,0x55,0x1a};
+const u8 jump_app1_buf1[4] = {0xa1,0x55,0xaa,0x1a};
 const u8 jump_app2_buf[4] = {0xa2,0x55,0xaa,0x2a};
 const u8 jump_appbackup_buf[4] = {0xa3,0xaa,0x33,0x3a};
 
@@ -19,6 +20,14 @@ void app1()
 	rt_kprintf("please input reboot restart system!\r\n");
 }
 MSH_CMD_EXPORT(app1, restart app1 System);
+
+void localhost()
+{
+	rt_kprintf("localhost update system!\r\n");
+	STMFLASH_Write(JUMP_FLAG_ADDRESS,(uint32_t *)jump_app1_buf1,1);
+	rt_kprintf("please input reboot localhost update system!\r\n");
+}
+MSH_CMD_EXPORT(localhost, restart System);
 
 void app2()
 {

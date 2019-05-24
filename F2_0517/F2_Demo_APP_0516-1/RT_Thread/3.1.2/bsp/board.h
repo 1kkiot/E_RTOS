@@ -16,7 +16,7 @@
 // </e>
 // <o> Internal SRAM memory size[Kbytes] <8-64>
 //	<i>Default: 64
-#define	STM32_SRAM_SIZE		32
+#define	STM32_SRAM_SIZE		48
 #define STM32_SRAM_END (0x20000000 + STM32_SRAM_SIZE * 1024)
 #ifdef __CC_ARM
 extern int Image$$RW_IRAM1$$ZI$$Limit;

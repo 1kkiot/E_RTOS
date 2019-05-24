@@ -33,7 +33,10 @@ typedef struct
 	u16 RX_Size;		//receive length
 }UartDMA_t;  
 #pragma pack(pop)
-
+typedef enum{
+	UART_RX_STATE_READY,
+	UART_RX_STATE_START
+}_uartRxState;
 extern UartDMA_t UartAT;
 
 #endif
